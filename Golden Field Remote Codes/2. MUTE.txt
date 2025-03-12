@@ -1,0 +1,36 @@
+Protocol=PulseDistance Raw-Data=0x3B6 10 bits LSB first Gap=886800us Duration=19000us
+
+Send on a 32 bit platform with: IrSender.sendPulseDistanceWidth(38, 1300, 400, 450, 1200, 1300, 400, 0x3B6, 10, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Raw result in internal ticks (50 us) - with leading gap
+rawData[24]: 
+ -17736
+ +26,- 8
+ +26,- 8 + 9,-24 + 9,-25 +26,- 8
+ + 9,-24 + 9,-25 +26,- 8 + 9,-24
+ +10,-24 + 9,-25 + 9
+Duration=380 ticks
+
+Raw result in microseconds - with leading gap
+rawData[24]: 
+ -886800
+ +1300,- 400
+ +1300,- 400 + 450,-1200 + 450,-1250 +1300,- 400
+ + 450,-1200 + 450,-1250 +1300,- 400 + 450,-1200
+ + 500,-1200 + 450,-1250 + 450
+Duration=19000us
+
+
+Result as internal 8bit ticks (50 us) array - compensated with MARK_EXCESS_MICROS=20
+uint8_t rawTicks[23] = {26,8, 26,8, 9,24, 9,25, 26,8, 9,24, 9,25, 26,8, 9,24, 10,24, 9,25, 9};  // Protocol=PulseDistance Raw-Data=0x3B6 10 bits LSB first Gap=886800us Duration=19000us
+
+Result as microseconds array - compensated with MARK_EXCESS_MICROS=20
+uint16_t rawData[23] = {1280,420, 1280,420, 430,1220, 430,1270, 1280,420, 430,1220, 430,1270, 1280,420, 430,1220, 480,1220, 430,1270, 430};  // Protocol=PulseDistance Raw-Data=0x3B6 10 bits LSB first Gap=886800us Duration=19000us
+
+uint16_t address = 0x0;
+uint16_t command = 0x0;
+uint64_t rawData = 0x3B6;
+
+
+Pronto Hex as string
+char prontoData[] = "0000 006D 000C 0000 0033 000F 0033 000F 0012 002D 0012 002F 0033 000F 0012 002D 0012 002F 0033 000F 0012 002D 0014 002D 0012 002F 0012 06C3 ";
